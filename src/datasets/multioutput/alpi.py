@@ -15,9 +15,16 @@ class Alpi(base.FileDataset):
     The Alarms Logs in Packaging Industry (ALPI) dataset consists of a sequence of alarms logged by packaging equipment in an industrial environment. The collection includes data logged by 20 machines, deployed in different plants around the world, from 2019-02-21 to 2020-06-17. There are 154 distinct alarm codes, whose distribution is highly unbalanced.
 
     Source: https://ieee-dataport.org/open-access/alarm-logs-packaging-industry-alpi
+
+    Parameters:
+    - machine: serial number of the machine to use, that can take numeric values from 0 to 19.
+    - input_win: size of the input window in number of entries.
+    - output_win: size of the output window in number of entries.
+    - delta: time difference between the end of the input window and the start of the output window, in number of entries.
+    - sigma: stride between consecutive input windows, in number of entries.
     """
 
-    def __init__(self, machine, input_win=1440, output_win=1440, delta=0, sigma=720, min_count=0):
+    def __init__(self, machine, input_win=1720, output_win=480, delta=0, sigma=120, min_count=0):
         super().__init__(
             filename="alpi.csv",
             directory=Path(__file__).parent,

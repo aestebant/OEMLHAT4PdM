@@ -7,7 +7,7 @@ class NPS(base.FileDataset):
     """
     Condition Based Maintenance of Naval Propulsion Plants. Data have been generated from a sophisticated simulator of a Gas Turbines (GT), mounted on a Frigate characterized by a COmbined Diesel eLectric And Gas (CODLAG) propulsion plant type.
 
-    Source: https://www.andreacoraddu.me/github-dataset/open-dataset
+    Source: https://archive.ics.uci.edu/dataset/316/condition+based+maintenance+of+naval+propulsion+plants
     """
 
     def __init__(self):
@@ -17,7 +17,7 @@ class NPS(base.FileDataset):
             n_features=23,
             n_outputs=4,
             filename="nps_sp15.csv",
-            directory="../datasets",
+            directory=Path(__file__).parent,
         )
 
     def __iter__(self):
