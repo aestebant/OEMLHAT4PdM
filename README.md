@@ -1,8 +1,8 @@
 # OEMLHAT4PdM: Online Ensemble of Multi-Label Hoeffding Trees for Predictive Maintenance
 
-Associated repository with complementary material to the manuscript *Simultaneous fault prediction in evolving industrial environments with Hoeffding adaptive trees*, submitted to the Machine Learning journal. The following materials are included:
+Associated repository with complementary material to the manuscript *Simultaneous fault prediction in evolving industrial environments with ensembles of Hoeffding adaptive trees*, submitted to the Applied Intelligence journal. The following materials are included:
 
-* Source cod of the OEMLHAT proposal.
+* Source code of the OEMLHAT proposal.
 * Datasets used in the experimentation.
 * Complete table of results.
 * Complete instructions to execute the model and reproduce the experimentation.
@@ -17,14 +17,20 @@ The source code of OEMLHAT is available under the file [src/oemlhat](src/oemlhat
 from oemlhat import OEMLHAT
 
 learner = OEMLHAT(
-    ensemble='SRP',
-    n_models=10,
-    grace_period=65,
-    delta=7.38e-4,
-    cardinality_th=640,
-    drift_window_threshold=250,
-    poisson_rate=4,
-    switch_significance=0.019,
+    n_models = 10,
+    subspace_size = 0.6,
+    lam = 5,
+    grace_period = 205,
+    delta = 2.5093683326920607e-07,
+    tau = 0.05,
+    cardinality_th = 135,
+    entropy_th = 0.75,
+    drift_window_threshold = 208,
+    perf_metric = MicroAverage(F1()),
+    switch_significance = 0.036,
+    lc_n_neighbors = 13,
+    lc_window_size = 140,
+    hc_lr = 0.95,
 )
 ```
 
@@ -35,13 +41,13 @@ OEMLHAT's performance has been tested on three public predictive maintenance pro
 | Case study | Reference | Stream length | Numerical features | Categorical features | Labels | Cardinality | Density |
 |-----------|-----|-----------------|----------------------|------------------------|--------|-------------|---------|
 | Ai4i      | [UCI repository](https://archive.ics.uci.edu/ml/datasets/AI4I+2020+Predictive+Maintenance+Dataset) | 10,000          | 5                    | 1                      | 5      | 3.75e-2     | 7.46e-3 |
-| NPS     | [Author's website](https://www.andreacoraddu.me/github-dataset/open-dataset) | 65,473          | 25                   | 0                      | 4      | 2.00        | 0.50    |
+| NPS     | [UCI repository](https://archive.ics.uci.edu/dataset/316/condition+based+maintenance+of+naval+propulsion+plants) | 65,473          | 25                   | 0                      | 4      | 2.00        | 0.50    |
 | ALPI   | [IEEE dataport](https://ieee-dataport.org/open-access/alarm-logs-packaging-industry-alpi) | 3,395           | 36                   | 0                      | 47     | 2.83        | 6.16e-2 |
 
 Moreover, they can be loaded as data stream in River framework using the functions under the folder [src/datasets](src/datasets/)
 
 ```python
-from datasets.multioutput.ai4i import Ai4i
+from datasets.multioutput import Ai4i
 
 stream = Ai4i()
 
