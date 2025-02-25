@@ -122,6 +122,14 @@ Machine 1
 
 The complete list of machines are available under the [results](results) folder with the name *paperpdm_onlinevsoffline_Alpi-X* where *X* goes from 0 to 19.
 
+### Interpretability of results
+
+OEMLHAT is interpretable in the sense that it is composed of only 10 base models and these are relatively interpretable, being decision trees. One such tree generated for the NPS problem is shown below as an example.
+
+![graph of a base tree in OEMLHAT](results/paperpdm_nps_tree0.jpg)
+
+The rest of trees are available under the [results](results) folder with the format *paperpdm_problem_treeX.pdf*, where *problem* is AI4I, NPS or ALPI and *X* is the number of the base tree that can goes from 0 to 9.
+
 ## Reproductible experimentation
 
 All the experimentation has been carried out in Python, using for the comparative analysis in the online learning paradigm the implementations available in [River](https://riverml.xyz) of the main multi-label methods. The methods together with their configurations are the following:
