@@ -56,19 +56,71 @@ x, y = next(iter(stream))
 
 ## Results
 
-The complete results of the experimentation carried out in this work and presented and discussed in the associated paper are available in CSV format for downloaading in the [results](results) folder. These are the average results over the tree tested problems.
+The complete results of the experimentation carried out in this work and presented and discussed in the associated paper are available in CSV format for downloaading in the [results](results) folder. The results are summarized and detailed by study below.
 
-| Model           | Subset acc      | Hamming loss    | Example acc     | Example F1      | Micro F1        | Micro precision | Micro recall  | Macro F1        | Macro precision | Macro recall    |
-|-----------------|-----------------|-----------------|-----------------|-----------------|-----------------|-----------------|---------------|-----------------|-----------------|-----------------|
-| HT              | 0.6698          | 0.0365          | 0.9586          | 0.7935          | 0.5138          | 0.6617          | 0.4670        | 0.4124          | 0.6040          | 0.4067          |
-| HAT             | 0.6322          | 0.0472          | 0.9478          | 0.7778          | 0.5033          | 0.6549          | 0.4526        | 0.4030          | 0.5978          | 0.3939          |
-| AMR             | 0.6947          | 0.0339          | 0.9611          | 0.8429          | 0.6433          | 0.6554          | **0.6318** | **0.5894** | 0.5978          | **0.5857** |
-| KNN             | 0.6368          | 0.0504          | 0.9447          | 0.7875          | 0.5778          | 0.7061          | 0.5317        | 0.4490          | 0.6242          | 0.4354          |
-| MLHT            | 0.5022          | 0.1213          | 0.8737          | 0.6536          | 0.2450          | 0.8457          | 0.1758        | 0.1912          | **0.9603** | 0.1515          |
-| iSOUPT          | 0.7101          | 0.0295          | 0.9656          | 0.8397          | 0.6248          | 0.6249          | 0.6248        | 0.5690          | 0.5655          | 0.5752          |
-| $OEMLHAT_{BA}$  | 0.6953          | 0.0342          | 0.9609          | 0.8292          | 0.5916          | 0.8090          | 0.5323        | 0.4737          | 0.8403          | 0.4459          |
-| $OEMLHAT_{SRP}$ | **0.7549** | **0.0219** | **0.9732** | **0.8736** | 0.6285          | **0.8517** | 0.5888        | 0.5752          | 0.8510          | 0.5527          |
-| $OEMLHAT_{BO}$  | 0.7149          | 0.0281          | 0.9670          | 0.8394          | **0.6799** | 0.7773          | 0.6237        | 0.5602          | 0.6726          | 0.5198          |
+### Study 1: Evaluating existing online multi-label classification methods in predictive maintenance problems with simultaneous failures in comparison with OEMLHAT
+
+The average results are the following:
+
+| Method | Subset acc | Hamming loss | Example F1 | Example precision | Example recall | Micro F1 | Micro precision | Micro recall | Macro F1 | Macro precision | Macro recall |
+|---|---|---|---|---|---|---|---|---|---|---|---|
+| AMR | 0.9500 | 0.0097 | 0.9506 | 0.9758 | 0.9683 | 0.2533 | 0.2960 | 0.2214 | 0.1702 | 0.1967 | 0.1509 |
+| kNN | 0.9650 | 0.0063 | 0.9656 | 0.9914 | 0.9689 | 0.3615 | 0.7074 | 0.2427 | 0.1911 | 0.4993 | 0.1630 |
+| HT | 0.9599 | 0.0075 | 0.9602 | 0.9893 | 0.9656 | 0.2252 | 0.4843 | 0.1467 | 0.1000 | 0.5033 | 0.0952 |
+| HAT | 0.9599 | 0.0075 | 0.9602 | 0.9893 | 0.9656 | 0.2252 | 0.4843 | 0.1467 | 0.1000 | 0.5033 | 0.0952 |
+| ARF | 0.9661 | 0.0062 | 0.9665 | 0.9927 | 0.9684 | 0.3517 | 0.7831 | 0.2267 | 0.1749 | 0.7965 | 0.1496 |
+| AMF | 0.9673 | 0.0059 | 0.9678 | 0.9924 | 0.9703 | 0.4161 | 0.7871 | 0.2828 | **0.2480** | 0.6249 | 0.1938 |
+| MLHT | 0.9604 | 0.0074 | 0.9604 | **0.9950** | 0.9604 | 0.0000 | **0.9950** | 0.0000 | 0.0000 | **0.9950** | 0.0000 |
+| iSOUPT | 0.9458 | 0.0107 | 0.9471 | 0.9699 | 0.9702 | 0.2794 | 0.2786 | 0.2801 | 0.1954 | 0.1957 | **0.1952** |
+| MLHAT | 0.9498 | 0.0095 | 0.9501 | 0.9823 | 0.9627 | 0.0940 | 0.1595 | 0.0667 | 0.0638 | 0.1023 | 0.0466 |
+| OEMLHAT | **0.9680** | **0.0057** | **0.9690** | 0.9930 | **0.9708** | **0.5075** | 0.8768 | **0.3571** | 0.1820 | 0.8734 | 0.1769 |
+
+The detailed results per problem are available in the following files:
+
+* [results/study1_results_ai4i.csv](results/study1_results_ai4i.csv): complete results for the Ai4i case study.
+* [results/study1_results_nps.csv](results/study1_results_nps.csv): complete results for the NPS case study.
+* [results/study1_results_alpi_average.csv](results/study1_results_alpi_average.csv): average results for the ALPI case study considering all the machines. The detailed results per machine are available in the same location under the name *study1_results_alpi_X.csv*, where *X* goes from 0 to 19 indicating the ID of the machine.
+
+### Study 2: Evaluating previous approaches applied to PdM problems with simultaneous failures in comparison with OEMLHAT and the online approach
+
+The second study compares the performance of OEMLHAT against proposals in the literature that have addressed each case study. The average results are shown below.
+
+| Case | Method | Subset acc | Hamming loss | Example F1 | Example precision | Example recall | Micro F1 | Micro precision | Micro recall | Macro F1 | Macro precision | Macro recall |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| Ai4i | MLLionF | 0.9820 | **0.0038** | **0.9831** | 0.9966 | 0.9855 | 0.4607 | 0.7069 | 0.3417 | **0.2644** | 0.6158 | 0.4047 |
+|  | ExplBagDT | 0.9645 | 0.0076 | 0.9651 | 0.9993 | 0.9656 | 0.2508 | **0.9048** | 0.1456 | 0.1986 | **0.9636** | 0.1370 |
+|  | MLSVM | 0.9784 | 0.0047 | 0.9784 | **0.9994** | 0.9790 | 0.0781 | 0.6250 | 0.0417 | 0.2444 | 0.9250 | 0.2270 |
+|  | OEMLHAT | **0.9824** | **0.0038** | 0.9828 | 0.9964 | **0.9863** | **0.4751** | 0.7049 | **0.3583** | 0.2604 | 0.3709 | **0.4108** |
+||||||||||||||
+| NPS | MLDNN | 0.0813 | 0.4429 | 0.6769 | 0.6094 | 0.6891 | 0.6512 | 0.6115 | 0.6965 | 0.5717 | 0.7123 | 0.7500 |
+|  | MLSVM | 0.0494 | 0.5000 | 0.6514 | 0.5937 | 0.5087 | 0.5429 | 0.5937 | 0.5000 | 0.3725 | 0.7969 | 0.5000 |
+|  | OEMLHAT | **0.9076** | **0.0229** | **0.9753** | **0.9728** | **0.9854** | **0.9758** | **0.9694** | **0.9824** | **0.9719** | **0.9646** | **0.9796** |
+||||||||||||||
+| ALPI | FORMULA | 0.0829 | 0.0954 | 0.4026 | 0.4636 | 0.7689 | 0.4190 | 0.3528 | 0.5436 | 0.2624 | **0.7223** | 0.3322 |
+|  | BATOCDM | 0.0783 | 0.0879 | 0.4051 | 0.4475 | **0.7712** | 0.4203 | 0.3589 | 0.5269 | 0.2434 | 0.7003 | 0.3187 |
+|  | OEMLHAT | **0.3277** | **0.0423** | **0.6398** | **0.7668** | 0.7660 | **0.6359** | **0.6819** | **0.6063** | **0.6180** | 0.7012 | **0.5913** |
+
+In addition, the degradation of the static models vs. our incremental proposal is shown below for each dataset.
+
+#### Ai4i case study
+
+![Ai4i evolution](results/paperpdm_onlinevsoffline_Ai4i.jpg)
+
+#### NPS case study
+
+![NPS evolution](results/paperpdm_onlinevsoffline_Naval.jpg)
+
+#### ALPI case study
+
+Machine 0
+
+![ALPI 0 evolution](results/paperpdm_onlinevsoffline_Alpi-0.jpg)
+
+Machine 1
+
+![ALPI 1 evlution](results/paperpdm_onlinevsoffline_Alpi-1.jpg)
+
+The complete list of machines are available under the [results](results) folder with the name *paperpdm_onlinevsoffline_Alpi-X* where *X* goes from 0 to 19.
 
 ## Reproductible experimentation
 
