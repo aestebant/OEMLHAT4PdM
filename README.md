@@ -1,6 +1,6 @@
 # OEMLHAT4PdM: Online Ensemble of Multi-Label Hoeffding Trees for Predictive Maintenance
 
-Associated repository with complementary material to the manuscript *Simultaneous fault prediction in evolving industrial environments with ensembles of Hoeffding adaptive trees*, submitted to the Applied Intelligence journal. The following materials are included:
+Associated repository with complementary material to the paper *Simultaneous fault prediction in evolving industrial environments with ensembles of Hoeffding adaptive trees*, [published](https://doi.org/10.1007/s10489-025-06786-7) in the Applied Intelligence journal. The following materials are included:
 
 * Source code of the OEMLHAT proposal.
 * Datasets used in the experimentation.
